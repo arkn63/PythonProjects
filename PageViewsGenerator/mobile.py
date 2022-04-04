@@ -56,6 +56,6 @@ if __name__ == '__main__':
         time.sleep(random.randint(1, 3))
         print('DONE')
 
-    function_list = [click_on_link]
+    function_list = [click_on_link,scroll_to_bottom]
     random.choice(function_list)()
     scroll.close()
