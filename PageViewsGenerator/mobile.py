@@ -8,17 +8,15 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
-#import warnings
-#warnings.filterwarnings("ignore")
 
+#Emulate iPhone X
 mobile_emulation = {
             "deviceMetrics": {"width": 375, "height": 812, "pixelRatio": 3.0},
             "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
         }
 chrome_options = Options()
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-
-scroll = webdriver.Chrome("C:\\DRIVER\\chromedriver.exe",chrome_options=chrome_options)
+scroll = webdriver.Chrome(service=Service(ChromeDriverManager().install()),chrome_options=chrome_options)
 wait = WebDriverWait(scroll,10)
 
 if __name__ == '__main__':
@@ -33,7 +31,7 @@ if __name__ == '__main__':
         print('DONE')
 
     def click_on_link():
-        link_list = ['RECIPES', 'BUNDLES', 'SUPERFOODS']
+        link_list = ['BLOG', 'BUNDLES', 'SUPERFOODS']
         i = randrange(len(link_list))
         link = link_list[i]
         print('TAP ON LINK '+link)
@@ -42,7 +40,6 @@ if __name__ == '__main__':
             "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
         }
         url = "https://shopkarenberrios.com/"
-
         time.sleep(random.randint(3, 5))
         scroll.get(url)
         nav_bar = 'm-menu-btn'
